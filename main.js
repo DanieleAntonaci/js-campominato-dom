@@ -1,6 +1,7 @@
 'use strict'
 const container = document.querySelector('.container');
 const btnPlay = document.querySelector('button#play');
+const textLoose = document.getElementById('text-looser');
 let difficultyLevel;
 let bombElement;
 
@@ -42,8 +43,12 @@ btnPlay.addEventListener('click', function () {
 
         // bottone che cambia il colore
         boxNumerato.addEventListener('click', function () {
+            this.classList.add('clicked');
             if (bombElement.includes(i + 1)) {
+                this.classList.remove('clicked');
                 this.classList.add('bomb');
+                let point = document.getElementsByClassName('clicked').length;
+                createText(point);
             }
         })
         container.appendChild(boxNumerato)
@@ -74,3 +79,6 @@ function createArrayNum(numPossibility, minNum, maxNum) {
     return arrayNumb;
 };
 
+function createText(numBoxSelected) {
+    textLoose.innerHTML = `Mi dispiace hai perso, hai fatto ${numBoxSelected} punti`;
+};
