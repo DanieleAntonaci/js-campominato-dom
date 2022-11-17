@@ -44,23 +44,27 @@ btnPlay.addEventListener('click', function () {
         };
 
         // bottone che cambia il colore
-
+        let endGame = false
 
         boxNumerato.addEventListener('click', function () {
-            this.classList.add('clicked');
-            point += 1;
-            if (index === point + 1) {
-                textLoose.innerHTML = `Complimenti hai vinto`;
-            }
-            if (bombElement.includes(i + 1)) {
-                this.classList.remove('clicked');
-                this.classList.add('bomb');
-                textLoose.innerHTML = `Mi dispiace hai perso, hai fatto ${point - 1} punti`;
-
-                for (let i = 0; i < bombElement.length; i++) {
-                    document.querySelector(`.box-${bombElement[i]}`).classList.add('bomb')
+            if (!endGame) {
+                this.classList.add('clicked');
+                point += 1;
+                if (index === point + 1) {
+                    textLoose.innerHTML = `Complimenti hai vinto`;
+                }
+                if (bombElement.includes(i + 1)) {
+                    this.classList.remove('clicked');
+                    this.classList.add('bomb');
+                    textLoose.innerHTML = `Mi dispiace hai perso, hai fatto ${point - 1} punti`;
+                    // Colora di rosso tutte le caselle le caselle
+                    for (let i = 0; i < bombElement.length; i++) {
+                        document.querySelector(`.box-${bombElement[i]}`).classList.add('bomb')
+                    };
+                    endGame = true;
                 }
             }
+
         })
 
         container.appendChild(boxNumerato)
