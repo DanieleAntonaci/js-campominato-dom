@@ -7,9 +7,13 @@ let bombElement;
 
 
 
+
+
 // bottone per far comparire la griglia
 btnPlay.addEventListener('click', function () {
     container.innerHTML = '';
+    textLoose.innerHTML = '';
+    let point = document.getElementsByClassName('clicked').length;
     console.clear();
     difficultyLevel = document.querySelector('#difficulty-level').value;
     let index;
@@ -44,16 +48,20 @@ btnPlay.addEventListener('click', function () {
         // bottone che cambia il colore
         boxNumerato.addEventListener('click', function () {
             this.classList.add('clicked');
+            point += 1;
+            if (index === point + 1) {
+                textLoose.innerHTML = `Complimenti hai vinto`;
+            }
             if (bombElement.includes(i + 1)) {
                 this.classList.remove('clicked');
                 this.classList.add('bomb');
-                let point = document.getElementsByClassName('clicked').length;
-                createText(point);
+                textLoose.innerHTML = `Mi dispiace hai perso, hai fatto ${point - 1} punti`;
             }
         })
         container.appendChild(boxNumerato)
     };
 });
+
 
 
 // FUNZIONI
@@ -77,8 +85,4 @@ function createArrayNum(numPossibility, minNum, maxNum) {
 
     }
     return arrayNumb;
-};
-
-function createText(numBoxSelected) {
-    textLoose.innerHTML = `Mi dispiace hai perso, hai fatto ${numBoxSelected} punti`;
 };
