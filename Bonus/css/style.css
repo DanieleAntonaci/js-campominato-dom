@@ -1,0 +1,82 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+/* header */
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+
+    padding: 15px;
+    font-size: 1.5rem;
+    background-color: aquamarine;
+}
+header h1 img {
+    vertical-align: middle;
+
+}
+
+#btn button{
+    padding: 10px 40px;
+}
+#btn #difficulty-level{
+    padding: 10px 40px;
+}
+
+/* main */
+.container {
+    width: 70vw;
+    height: 70vw;
+    margin: 50px auto; 
+
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+}
+
+.box{
+    border: 1px solid black;
+    font-size: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.easy{
+    width: 7vw;
+    height: 7vw;
+}
+.medium{
+    width: calc(70vw / 9);
+    height: calc(70vw / 9);
+}
+.hard{
+    width: calc(70vw/7);
+    height: calc(70vw / 7);
+}
+.box.clicked{
+    background-color: aqua;
+}
+/* footer */
+footer{
+    padding: 20px;
+    background-color: aquamarine;
+    font-size: 1.2rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.bomb{
+    background-color: red;
+}
+#text-looser{
+    text-align: center;
+}
